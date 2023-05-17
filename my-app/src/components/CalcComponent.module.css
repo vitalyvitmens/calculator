@@ -1,0 +1,39 @@
+input {
+  background-color: black;
+	color: white;
+  font-size: 30px;
+  text-align: end;
+	width: 17rem;
+  height: 7rem;
+  border-radius: 15px;
+  border: 0;
+}
+
+.button {
+	display: inline-block;
+	border-radius: 50%;
+	padding: 0.25rem;
+	margin: 0.25rem;
+	width: 4rem;
+	height: 4rem;
+	background-color: #373d49;
+	color: white;
+	font-size: 20px;
+	border: 0;
+	box-shadow: -2px 1px black;
+	cursor: pointer;
+}
+
+.button:hover {
+	background-color: #434c5c;
+	box-shadow: -2px 1px rgb(20, 20, 20);
+}
+
+li {
+	list-style-type: none;
+}
+
+ul {
+	margin-left: 0;
+	padding-left: 0;
+}
