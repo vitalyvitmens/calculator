@@ -1,22 +1,69 @@
-input {
-  background-color: black;
+.display {
+	background-color: black;
 	color: white;
-  font-size: 30px;
-  text-align: end;
-	width: 17rem;
-  height: 7rem;
-  border-radius: 15px;
-  border: 0;
+	font-size: 30px;
+	text-align: end;
+	width: 15rem;
+	height: 5rem;
+	border-radius: 15px;
+	border: 0;
+	padding: 0px 10px 0px 10px;
 }
 
-.button {
+.number {
 	display: inline-block;
 	border-radius: 50%;
 	padding: 0.25rem;
 	margin: 0.25rem;
-	width: 4rem;
-	height: 4rem;
+	width: 3.5rem;
+	height: 3.5rem;
 	background-color: #373d49;
+	color: white;
+	font-size: 20px;
+	border: 0;
+	box-shadow: -2px 1px black;
+	cursor: pointer;
+}
+
+.initialize {
+	display: inline-block;
+	border-radius: 50%;
+	padding: 0.25rem;
+	margin: 0.25rem;
+	width: 3.5rem;
+	height: 3.5rem;
+	background-color: #373d49;
+	color: grey;
+	font-size: 20px;
+	border: 0;
+	box-shadow: -2px 1px black;
+	cursor: pointer;
+}
+
+.operator {
+	display: inline-block;
+	border-radius: 50%;
+	padding: 0.25rem;
+	margin: 0.25rem;
+	width: 3.5rem;
+	height: 3.5rem;
+	background-color: #373d49;
+	color: blue;
+	font-size: 20px;
+	border: 0;
+	box-shadow: -2px 1px black;
+	cursor: pointer;
+}
+
+.equal {
+	display: inline-block;
+	/* border-radius: 50%; */
+	padding: 0.25rem;
+	margin: 0.25rem;
+	width: 3.5rem;
+	height: 3.5rem;
+	background-color: blue;
+	grid-column: 4/6;
 	color: white;
 	font-size: 20px;
 	border: 0;
@@ -31,6 +78,7 @@ input {
 
 li {
 	list-style-type: none;
+  text-align: left;
 }
 
 ul {

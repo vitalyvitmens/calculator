@@ -1,92 +1,116 @@
 import styles from './CalcComponent.module.css'
+import { useState } from 'react'
 
 export const CalcComponent = (props) => {
-	// const programmingLanguages = [
-	// 	{ id: '1', name: 'Python' },
-	// 	{ id: '2', name: 'Dart' },
-	// 	{ id: '3', name: 'JavaScript' },
-	// ]
+	const [calc, setCalc] = useState('')
+	const [result, setResult] = useState('')
 
-	// const clickProgrammingLanguages = () =>
-	// 	console.log(
-	// 		`Вы кликнули по объекту: ${JSON.stringify(programmingLanguages)}`
-	// 	)
+	const ops = ['/', '*', '+', '-', ',']
+
+	const updateCalc = (value) => {
+		setCalc(calc + value)
+	}
 
 	const buttonsArr = [
-		{ value: 'MC', type: 'initialize', id: 'mc' },
-		{ value: 'M+', type: 'operator', id: 'mMult' },
-		{ value: 'M-', type: 'operator', id: 'mDiv' },
-		{ value: 'MR', type: 'operator', id: 'mr' },
+		{ value: 'MC', type: styles.initialize, id: 'mc' },
+		{ value: 'M+', type: styles.initialize, id: 'mMult' },
+		{ value: 'M-', type: styles.initialize, id: 'mDiv' },
+		{ value: 'MR', type: styles.initialize, id: 'mr' },
 
-    { value: 'C', type: 'initialize', id: 'reset' },
-		{ value: '/', type: 'operator', id: 'div' },
-		{ value: 'X', type: 'operator', id: 'mult' },
-		{ value: 'del', type: 'operator', id: 'pop' },
+		{ value: 'C', type: styles.operator, id: 'reset' },
+		{ value: '/', type: styles.operator, id: 'div' },
+		{ value: 'X', type: styles.operator, id: 'mult' },
+		{ value: 'del', type: styles.operator, id: 'pop' },
 
-		{ value: '7', type: 'number', id: 'seven' },
-		{ value: '8', type: 'number', id: 'eight' },
-		{ value: '9', type: 'number', id: 'nine' },
-		{ value: '-', type: 'operator', id: 'min' },
+		{ value: '7', type: styles.number, id: 'seven' },
+		{ value: '8', type: styles.number, id: 'eight' },
+		{ value: '9', type: styles.number, id: 'nine' },
+		{ value: '-', type: styles.operator, id: 'min' },
 
-		{ value: '4', type: 'number', id: 'four' },
-		{ value: '5', type: 'number', id: 'five' },
-		{ value: '6', type: 'number', id: 'six' },
-		{ value: '+', type: 'operator', id: 'add' },
+		{ value: '4', type: styles.number, id: 'four' },
+		{ value: '5', type: styles.number, id: 'five' },
+		{ value: '6', type: styles.number, id: 'six' },
+		{ value: '+', type: styles.operator, id: 'add' },
 
-		{ value: '1', type: 'number', id: 'one' },
-		{ value: '2', type: 'number', id: 'two' },
-		{ value: '3', type: 'number', id: 'three' },
-		{ value: '=', type: 'equal', id: 'equal' },
+		{ value: '1', type: styles.number, id: 'one' },
+		{ value: '2', type: styles.number, id: 'two' },
+		{ value: '3', type: styles.number, id: 'three' },
 
-		{ value: '%', type: 'operator', id: 'percent' },
-		{ value: '0', type: 'number', id: 'zero' },
-		{ value: ',', type: 'decimal', id: 'comma' },
-		{ value: '=', type: 'equal', id: 'equal' },
+		{ value: '%', type: styles.number, id: 'percent' },
+		{ value: '0', type: styles.number, id: 'zero' },
+		{ value: ',', type: styles.number, id: 'comma' },
+		{ value: '=', type: styles.equal, id: 'equal' },
 	]
+
+	const num = (e) => console.log(e)
 
 	return (
 		<>
 			<h1>Calculator</h1>
-      <input placeholder='0'></input>
-			<ul>
+			<div className={styles.display}>
+				{result ? <span>(0)</span> : ''}
+				{calc || '0'}
+			</div>
+			{/* <form>
+				<input placeholder="0"></input>
+			</form> */}
+			<ul onClick={num}>
 				<li>
-					{buttonsArr.slice(0, 4).map(({ id, value }) => (
-						<button key={id} className={styles.button}>
+					{buttonsArr.slice(0, 4).map(({ id, value, type }) => (
+						<button key={id} className={type} >
 							{value}
 						</button>
 					))}
 				</li>
 				<li>
-					{buttonsArr.slice(4, 8).map(({ id, value }) => (
-						<button key={id} className={styles.button}>
+					{buttonsArr.slice(4, 8).map(({ id, value, type }) => (
+						<button key={id} className={type}
+            onClick={() => updateCalc(value)}
+            >
 							{value}
 						</button>
 					))}
 				</li>
 				<li>
-					{buttonsArr.slice(8, 12).map(({ id, value }) => (
-						<button key={id} className={styles.button}>
+					{buttonsArr.slice(8, 12).map(({ id, value, type }) => (
+						<button
+							key={id}
+							className={type}
+							onClick={() => updateCalc(value)}
+						>
 							{value}
 						</button>
 					))}
 				</li>
 				<li>
-					{buttonsArr.slice(12, 16).map(({ id, value }) => (
-						<button key={id} className={styles.button}>
+					{buttonsArr.slice(12, 16).map(({ id, value, type }) => (
+						<button
+							key={id}
+							className={type}
+							onClick={() => updateCalc(value)}
+						>
 							{value}
 						</button>
 					))}
 				</li>
 				<li>
-					{buttonsArr.slice(16, 20).map(({ id, value }) => (
-						<button key={id} className={styles.button}>
+					{buttonsArr.slice(16, 19).map(({ id, value, type }) => (
+						<button
+							key={id}
+							className={type}
+							onClick={() => updateCalc(value)}
+						>
 							{value}
 						</button>
 					))}
 				</li>
 				<li>
-					{buttonsArr.slice(20, 24).map(({ id, value }) => (
-						<button key={id} className={styles.button}>
+					{buttonsArr.slice(19, 24).map(({ id, value, type }) => (
+						<button
+							key={id}
+							className={type}
+							onClick={() => updateCalc(value)}
+						>
 							{value}
 						</button>
 					))}
