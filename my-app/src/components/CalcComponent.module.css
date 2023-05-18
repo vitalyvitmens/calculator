@@ -33,7 +33,7 @@
 	width: 3.5rem;
 	height: 3.5rem;
 	background-color: #373d49;
-	color: grey;
+	color: rgb(199, 190, 190);
 	font-size: 20px;
 	border: 0;
 	box-shadow: -2px 1px black;
@@ -48,8 +48,9 @@
 	width: 3.5rem;
 	height: 3.5rem;
 	background-color: #373d49;
-	color: blue;
-	font-size: 20px;
+	color: rgb(116, 165, 221);
+	font-size: 30px;
+	font-weight: bold;
 	border: 0;
 	box-shadow: -2px 1px black;
 	cursor: pointer;
@@ -62,10 +63,11 @@
 	margin: 0.25rem;
 	width: 3.5rem;
 	height: 3.5rem;
-	background-color: blue;
+	background-color: rgb(65, 65, 231);
 	grid-column: 4/6;
-	color: white;
-	font-size: 20px;
+	color: rgb(255, 255, 255);
+	font-size: 30px;
+	font-weight: bold;
 	border: 0;
 	box-shadow: -2px 1px black;
 	cursor: pointer;
@@ -78,10 +80,15 @@
 
 li {
 	list-style-type: none;
-  text-align: left;
+	text-align: left;
 }
 
 ul {
 	margin-left: 0;
 	padding-left: 0;
+}
+
+span {
+	color: rgb(167, 163, 163);
+	font-size: 18px;
 }

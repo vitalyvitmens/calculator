@@ -5,115 +5,153 @@ export const CalcComponent = (props) => {
 	const [calc, setCalc] = useState('')
 	const [result, setResult] = useState('')
 
-	const ops = ['/', '*', '+', '-', ',']
+	const ops = ['/', '*', '+', '-', '.']
 
 	const updateCalc = (value) => {
+		if (
+			(ops.includes(value) && calc === '') ||
+			(ops.includes(value) && ops.includes(calc.slice(-1)))
+		) {
+			return
+		}
 		setCalc(calc + value)
+
+		if (!ops.includes(value)) {
+			setResult(eval(calc + value).toString())
+		}
 	}
 
-	const buttonsArr = [
-		{ value: 'MC', type: styles.initialize, id: 'mc' },
-		{ value: 'M+', type: styles.initialize, id: 'mMult' },
-		{ value: 'M-', type: styles.initialize, id: 'mDiv' },
-		{ value: 'MR', type: styles.initialize, id: 'mr' },
+	const calculate = () => {
+		setCalc(eval(calc).toString())
+    //! Задай другой цвет результату на дисплее после нажатия =
+    // equalArr.type = styles.operator
 
-		{ value: 'C', type: styles.operator, id: 'reset' },
-		{ value: '/', type: styles.operator, id: 'div' },
-		{ value: 'X', type: styles.operator, id: 'mult' },
-		{ value: 'del', type: styles.operator, id: 'pop' },
+	}
 
-		{ value: '7', type: styles.number, id: 'seven' },
-		{ value: '8', type: styles.number, id: 'eight' },
-		{ value: '9', type: styles.number, id: 'nine' },
-		{ value: '-', type: styles.operator, id: 'min' },
+	const deleteLast = () => {
+		if (calc === '') {
+			return
+		}
+		const value = calc.slice(0, -1)
+		setCalc(value)
+		setResult('0')
+	}
 
-		{ value: '4', type: styles.number, id: 'four' },
-		{ value: '5', type: styles.number, id: 'five' },
-		{ value: '6', type: styles.number, id: 'six' },
-		{ value: '+', type: styles.operator, id: 'add' },
+	const reset = () => {
+		if (calc === '') {
+			return
+		}
+		const value = calc.slice(0, 0)
+		setCalc(value)
+		setResult('0')
+	}
 
-		{ value: '1', type: styles.number, id: 'one' },
-		{ value: '2', type: styles.number, id: 'two' },
-		{ value: '3', type: styles.number, id: 'three' },
-
-		{ value: '%', type: styles.number, id: 'percent' },
-		{ value: '0', type: styles.number, id: 'zero' },
-		{ value: ',', type: styles.number, id: 'comma' },
-		{ value: '=', type: styles.equal, id: 'equal' },
+	const initializesArr = [
+		{ id: 'mc', value: 'MC', type: styles.initialize },
+		{ id: 'mMult', value: 'M+', type: styles.initialize },
+		{ id: 'mDiv', value: 'M-', type: styles.initialize },
+		{ id: 'mr', value: 'MR', type: styles.initialize },
 	]
 
-	const num = (e) => console.log(e)
+	const operatorsArr = [
+		{ id: 'reset', value: 'C', type: styles.operator },
+		{ id: 'div', value: '/', type: styles.operator },
+		{ id: 'mult', value: '*', type: styles.operator },
+		{ id: 'pop', value: 'del', type: styles.operator },
+		{ id: 'min', value: '-', type: styles.operator },
+		{ id: 'add', value: '+', type: styles.operator },
+	]
+
+	const numbersArr = [
+		{ id: 'seven', value: '7', type: styles.number },
+		{ id: 'eight', value: '8', type: styles.number },
+		{ id: 'nine', value: '9', type: styles.number },
+		{ id: 'four', value: '4', type: styles.number },
+		{ id: 'five', value: '5', type: styles.number },
+		{ id: 'six', value: '6', type: styles.number },
+		{ id: 'one', value: '1', type: styles.number },
+		{ id: 'two', value: '2', type: styles.number },
+		{ id: 'three', value: '3', type: styles.number },
+		{ id: 'percent', value: '%', type: styles.number },
+		{ id: 'zero', value: '0', type: styles.number },
+		{ id: 'comma', value: '.', type: styles.number },
+	]
+
+	const equalArr = [{ id: 'equal', value: '=', type: styles.equal }]
 
 	return (
 		<>
 			<h1>Calculator</h1>
 			<div className={styles.display}>
-				{result ? <span>(0)</span> : ''}
+				{result ? <span>({result}) </span> : ''}
 				{calc || '0'}
 			</div>
-			{/* <form>
-				<input placeholder="0"></input>
-			</form> */}
-			<ul onClick={num}>
+			<ul>
 				<li>
-					{buttonsArr.slice(0, 4).map(({ id, value, type }) => (
-						<button key={id} className={type} >
+					{initializesArr.map(({ id, value, type }) => (
+						<button key={id} className={type}>
 							{value}
 						</button>
 					))}
 				</li>
 				<li>
-					{buttonsArr.slice(4, 8).map(({ id, value, type }) => (
-						<button key={id} className={type}
-            onClick={() => updateCalc(value)}
-            >
+					<button className={operatorsArr[0].type} onClick={reset}>
+						C
+					</button>
+					{operatorsArr.slice(1, 3).map(({ id, value, type }) => (
+						<button key={id} className={type} onClick={() => updateCalc(value)}>
 							{value}
 						</button>
 					))}
+					<button className={operatorsArr[3].type} onClick={deleteLast}>
+						del
+					</button>
 				</li>
 				<li>
-					{buttonsArr.slice(8, 12).map(({ id, value, type }) => (
-						<button
-							key={id}
-							className={type}
-							onClick={() => updateCalc(value)}
-						>
+					{numbersArr.slice(0, 3).map(({ id, value, type }) => (
+						<button key={id} className={type} onClick={() => updateCalc(value)}>
 							{value}
 						</button>
 					))}
+					<button
+						className={operatorsArr[4].type}
+						onClick={() => updateCalc('-')}
+					>
+						-
+					</button>
 				</li>
 				<li>
-					{buttonsArr.slice(12, 16).map(({ id, value, type }) => (
-						<button
-							key={id}
-							className={type}
-							onClick={() => updateCalc(value)}
-						>
+					{numbersArr.slice(3, 6).map(({ id, value, type }) => (
+						<button key={id} className={type} onClick={() => updateCalc(value)}>
 							{value}
 						</button>
 					))}
+					<button
+						className={operatorsArr[5].type}
+						onClick={() => updateCalc('+')}
+					>
+						+
+					</button>
 				</li>
 				<li>
-					{buttonsArr.slice(16, 19).map(({ id, value, type }) => (
-						<button
-							key={id}
-							className={type}
-							onClick={() => updateCalc(value)}
-						>
+					{numbersArr.slice(6, 9).map(({ id, value, type }) => (
+						<button key={id} className={type} onClick={() => updateCalc(value)}>
 							{value}
 						</button>
 					))}
+					<button className={equalArr[0].type} onClick={calculate}>
+						=
+					</button>
 				</li>
 				<li>
-					{buttonsArr.slice(19, 24).map(({ id, value, type }) => (
-						<button
-							key={id}
-							className={type}
-							onClick={() => updateCalc(value)}
-						>
+					{numbersArr.slice(9, 12).map(({ id, value, type }) => (
+						<button key={id} className={type} onClick={() => updateCalc(value)}>
 							{value}
 						</button>
 					))}
+					<button className={equalArr[0].type} onClick={calculate}>
+						=
+					</button>
 				</li>
 			</ul>
 		</>
