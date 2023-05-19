@@ -33,12 +33,17 @@
 	color: white;
 	font-size: 20px;
 	border: 0;
-	box-shadow: -2px 1px black;
+	box-shadow: -5px 3px black;
 	cursor: pointer;
 }
 
 .number:hover {
-	opacity: 0.75;
+	opacity: 0.8;
+	box-shadow: -5px 3px rgb(20, 20, 20);
+}
+
+.number:active {
+	opacity: 0.6;
 	box-shadow: -2px 1px rgb(20, 20, 20);
 }
 
@@ -53,12 +58,17 @@
 	color: rgb(199, 190, 190);
 	font-size: 20px;
 	border: 0;
-	box-shadow: -2px 1px black;
+	box-shadow: -5px 3px black;
 	cursor: pointer;
 }
 
 .initialize:hover {
-	opacity: 0.75;
+	opacity: 0.8;
+	box-shadow: -5px 3px rgb(20, 20, 20);
+}
+
+.initialize:active {
+	opacity: 0.6;
 	box-shadow: -2px 1px rgb(20, 20, 20);
 }
 
@@ -74,12 +84,17 @@
 	font-size: 30px;
 	font-weight: bold;
 	border: 0;
-	box-shadow: -2px 1px black;
+	box-shadow: -5px 3px black;
 	cursor: pointer;
 }
 
 .operator:hover {
-	opacity: 0.75;
+	opacity: 0.8;
+	box-shadow: -5px 3px rgb(20, 20, 20);
+}
+
+.operator:active {
+	opacity: 0.6;
 	box-shadow: -2px 1px rgb(20, 20, 20);
 }
 
@@ -96,12 +111,17 @@
 	font-size: 30px;
 	font-weight: bold;
 	border: 0;
-	box-shadow: -2px 1px black;
+	box-shadow: -5px 3px black;
 	cursor: pointer;
 }
 
 .equal:hover {
-	opacity: 0.75;
+	opacity: 0.8;
+	box-shadow: -5px 3px rgb(20, 20, 20);
+}
+
+.equal:active {
+	opacity: 0.6;
 	box-shadow: -2px 1px rgb(20, 20, 20);
 }
 

@@ -1,39 +1,38 @@
 import styles from './CalcComponent.module.css'
 import { useState } from 'react'
 
-const getTimeFromDate = (date) => date.toISOString().substring(11, 19)
-const randomNumber = () => (Math.random() * 10000000).toFixed()
+let greenColorDisplay = false
 
 export const CalcComponent = (props) => {
-	const [currentDate, setCurrentDate] = useState(new Date())
-	setTimeout(() => {
-		setCurrentDate(new Date())
-	}, 1000)
-
-	const [currentRandomNumber, setCurrentRandomNumber] = useState(randomNumber())
-	setTimeout(() => {
-		setCurrentRandomNumber(randomNumber())
-	}, 1000)
-
 	const [calc, setCalc] = useState('')
 	const [result, setResult] = useState('')
 
 	const ops = ['/', '*', '+', '-', '.']
 
 	const updateCalc = (value) => {
+		greenColorDisplay = false
 		if (
 			(ops.includes(value) && calc === '') ||
 			(ops.includes(value) && ops.includes(calc.slice(-1)))
 		) {
-			console.log('updateCalc: return (/ * - +)')
 			return
 		}
-		setCalc(calc + value)
-		console.log('updateCalc: setCalc')
+		if (!greenColorDisplay) {
+			setCalc(calc + value)
+			greenColorDisplay = false
 
-		if (!ops.includes(value)) {
-			setResult(eval(calc + value).toString())
-			console.log('updateCalc: setResult')
+			if (!ops.includes(value)) {
+				setResult(eval(calc + value).toString())
+				greenColorDisplay = false
+			}
+		} else {
+			setCalc(calc + value)
+			if (!ops.includes(value)) {
+				setResult(eval(calc + value).toString())
+				setResult(value)
+				setCalc(value)
+				greenColorDisplay = false
+			}
 		}
 	}
 
@@ -42,30 +41,27 @@ export const CalcComponent = (props) => {
 			return
 		}
 		setCalc(eval(calc).toString())
-		console.log('calculate: setCalc')
-		styles.display = styles.displayEqual
+		greenColorDisplay = true
 	}
 
 	const deleteLast = () => {
 		if (calc === '') {
-      console.log('deleteLast: return')
 			return
 		}
 		const value = calc.slice(0, -1)
 		setCalc(value)
 		setResult('0')
-    console.log('deleteLast')
+		greenColorDisplay = false
 	}
 
 	const reset = () => {
 		if (calc === '') {
-			console.log('reset: return')
 			return
 		}
 		const value = calc.slice(0, 0)
 		setCalc(value)
 		setResult('0')
-		console.log('reset')
+		greenColorDisplay = false
 	}
 
 	const initializesArr = [
@@ -103,10 +99,8 @@ export const CalcComponent = (props) => {
 
 	return (
 		<>
-			<div>{getTimeFromDate(currentDate)}</div>
-			<div>{randomNumber(currentRandomNumber)}</div>
 			<h1>Calculator</h1>
-			<div className={styles.display}>
+			<div className={greenColorDisplay ? styles.displayEqual : styles.display}>
 				{/* <div className={calc ? styles.displayEqual : styles.display}> */}
 				{result ? <span>({result}) </span> : ''}
 				{calc || '0'}
