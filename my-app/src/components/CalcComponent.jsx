@@ -23,6 +23,7 @@ export const CalcComponent = (props) => {
 
 			if (!ops.includes(value)) {
 				setResult(eval(calc + value).toString())
+				console.log('if (!greenColorDisplay)')
 				greenColorDisplay = false
 			}
 		} else {
@@ -31,6 +32,7 @@ export const CalcComponent = (props) => {
 				setResult(eval(calc + value).toString())
 				setResult(value)
 				setCalc(value)
+				console.log('if (greenColorDisplay)')
 				greenColorDisplay = false
 			}
 		}
@@ -64,23 +66,19 @@ export const CalcComponent = (props) => {
 		greenColorDisplay = false
 	}
 
-	const initializesArr = [
+	const buttonArr = [
 		{ id: 'mc', value: 'MC', type: styles.initialize },
 		{ id: 'mMult', value: 'M+', type: styles.initialize },
 		{ id: 'mDiv', value: 'M-', type: styles.initialize },
 		{ id: 'mr', value: 'MR', type: styles.initialize },
-	]
 
-	const operatorsArr = [
 		{ id: 'reset', value: 'C', type: styles.operator },
 		{ id: 'div', value: '/', type: styles.operator },
 		{ id: 'mult', value: '*', type: styles.operator },
 		{ id: 'pop', value: 'del', type: styles.operator },
 		{ id: 'min', value: '-', type: styles.operator },
 		{ id: 'add', value: '+', type: styles.operator },
-	]
 
-	const numbersArr = [
 		{ id: 'seven', value: '7', type: styles.number },
 		{ id: 'eight', value: '8', type: styles.number },
 		{ id: 'nine', value: '9', type: styles.number },
@@ -93,86 +91,79 @@ export const CalcComponent = (props) => {
 		{ id: 'percent', value: '%', type: styles.number },
 		{ id: 'zero', value: '0', type: styles.number },
 		{ id: 'comma', value: '.', type: styles.number },
-	]
 
-	const equalArr = [{ id: 'equal', value: '=', type: styles.equal }]
+		{ id: 'equal', value: '=', type: styles.equal },
+	]
 
 	return (
 		<>
-			<h1>Calculator</h1>
+			<h2>Calculator</h2>
 			<div className={greenColorDisplay ? styles.displayEqual : styles.display}>
-				{/* <div className={calc ? styles.displayEqual : styles.display}> */}
 				{result ? <span>({result}) </span> : ''}
 				{calc || '0'}
 			</div>
-			<ul>
-				<li>
-					{initializesArr.map(({ id, value, type }) => (
+			<div>
+				<div>
+					{buttonArr.slice(0, 4).map(({ id, value, type }) => (
 						<button key={id} className={type}>
 							{value}
 						</button>
 					))}
-				</li>
-				<li>
-					<button className={operatorsArr[0].type} onClick={reset}>
+				</div>
+				<div>
+					<button className={buttonArr[4].type} onClick={reset}>
 						C
 					</button>
-					{operatorsArr.slice(1, 3).map(({ id, value, type }) => (
+					{buttonArr.slice(5, 7).map(({ id, value, type }) => (
 						<button key={id} className={type} onClick={() => updateCalc(value)}>
 							{value}
 						</button>
 					))}
-					<button className={operatorsArr[3].type} onClick={deleteLast}>
+					<button className={buttonArr[7].type} onClick={deleteLast}>
 						del
 					</button>
-				</li>
-				<li>
-					{numbersArr.slice(0, 3).map(({ id, value, type }) => (
+				</div>
+				<div>
+					{buttonArr.slice(10, 13).map(({ id, value, type }) => (
 						<button key={id} className={type} onClick={() => updateCalc(value)}>
 							{value}
 						</button>
 					))}
-					<button
-						className={operatorsArr[4].type}
-						onClick={() => updateCalc('-')}
-					>
+					<button className={buttonArr[8].type} onClick={() => updateCalc('-')}>
 						-
 					</button>
-				</li>
-				<li>
-					{numbersArr.slice(3, 6).map(({ id, value, type }) => (
+				</div>
+				<div>
+					{buttonArr.slice(13, 16).map(({ id, value, type }) => (
 						<button key={id} className={type} onClick={() => updateCalc(value)}>
 							{value}
 						</button>
 					))}
-					<button
-						className={operatorsArr[5].type}
-						onClick={() => updateCalc('+')}
-					>
+					<button className={buttonArr[9].type} onClick={() => updateCalc('+')}>
 						+
 					</button>
-				</li>
-				<li>
-					{numbersArr.slice(6, 9).map(({ id, value, type }) => (
+				</div>
+				<div>
+					{buttonArr.slice(16, 19).map(({ id, value, type }) => (
 						<button key={id} className={type} onClick={() => updateCalc(value)}>
 							{value}
 						</button>
 					))}
-					<button className={equalArr[0].type} onClick={calculate}>
+					<button className={buttonArr[22].type} onClick={calculate}>
 						=
 					</button>
-				</li>
-				<li>
-					{numbersArr.slice(9, 12).map(({ id, value, type }) => (
+				</div>
+				<div>
+					{buttonArr.slice(19, 22).map(({ id, value, type }) => (
 						<button key={id} className={type} onClick={() => updateCalc(value)}>
 							{value}
 						</button>
 					))}
-					<button className={equalArr[0].type} onClick={calculate}>
+					<button className={buttonArr[22].type} onClick={calculate}>
 						=
 					</button>
-				</li>
-			</ul>
+				</div>
+			</div>
 		</>
 	)
 }
