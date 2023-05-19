@@ -10,30 +10,21 @@ export const CalcComponent = (props) => {
 	const ops = ['/', '*', '+', '-', '.']
 
 	const updateCalc = (value) => {
-		greenColorDisplay = false
-		if (
-			(ops.includes(value) && calc === '') ||
-			(ops.includes(value) && ops.includes(calc.slice(-1)))
-		) {
-			return
-		}
-		if (!greenColorDisplay) {
-			setCalc(calc + value)
-			greenColorDisplay = false
-
-			if (!ops.includes(value)) {
-				setResult(eval(calc + value).toString())
-				console.log('if (!greenColorDisplay)')
-				greenColorDisplay = false
-			}
+		if (calc === '0') {
+			reset()
 		} else {
-			setCalc(calc + value)
-			if (!ops.includes(value)) {
-				setResult(eval(calc + value).toString())
-				setResult(value)
-				setCalc(value)
-				console.log('if (greenColorDisplay)')
-				greenColorDisplay = false
+			greenColorDisplay = false
+			if (
+				(ops.includes(value) && calc === '') ||
+				(ops.includes(value) && ops.includes(calc.slice(-1)))
+			) {
+				return
+			}
+			if (!greenColorDisplay) {
+				setCalc(calc + value)
+				if (!ops.includes(value)) {
+					setResult(eval(calc + value).toString())
+				}
 			}
 		}
 	}
@@ -41,9 +32,10 @@ export const CalcComponent = (props) => {
 	const calculate = () => {
 		if (calc === '') {
 			return
+		} else {
+			setCalc(eval(calc).toString())
+			greenColorDisplay = true
 		}
-		setCalc(eval(calc).toString())
-		greenColorDisplay = true
 	}
 
 	const deleteLast = () => {
