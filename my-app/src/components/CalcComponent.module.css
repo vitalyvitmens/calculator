@@ -10,6 +10,18 @@
 	padding: 0px 10px 0px 10px;
 }
 
+.displayEqual {
+	background-color: black;
+	color: green;
+	font-size: 30px;
+	text-align: end;
+	width: 15rem;
+	height: 5rem;
+	border-radius: 15px;
+	border: 0;
+	padding: 0px 10px 0px 10px;
+}
+
 .number {
 	display: inline-block;
 	border-radius: 50%;
@@ -23,6 +35,11 @@
 	border: 0;
 	box-shadow: -2px 1px black;
 	cursor: pointer;
+}
+
+.number:hover {
+	opacity: 0.75;
+	box-shadow: -2px 1px rgb(20, 20, 20);
 }
 
 .initialize {
@@ -40,6 +57,11 @@
 	cursor: pointer;
 }
 
+.initialize:hover {
+	opacity: 0.75;
+	box-shadow: -2px 1px rgb(20, 20, 20);
+}
+
 .operator {
 	display: inline-block;
 	border-radius: 50%;
@@ -54,6 +76,11 @@
 	border: 0;
 	box-shadow: -2px 1px black;
 	cursor: pointer;
+}
+
+.operator:hover {
+	opacity: 0.75;
+	box-shadow: -2px 1px rgb(20, 20, 20);
 }
 
 .equal {
@@ -73,8 +100,8 @@
 	cursor: pointer;
 }
 
-.button:hover {
-	background-color: #434c5c;
+.equal:hover {
+	opacity: 0.75;
 	box-shadow: -2px 1px rgb(20, 20, 20);
 }
 
@@ -91,16 +118,4 @@ ul {
 span {
 	color: rgb(167, 163, 163);
 	font-size: 18px;
-}
-
-.red {
-	color: red;
-  font-size: 50px;
-  border: 5px, solid, white;
-}
-
-.white {
-  color: white;
-  font-size: 30px;
-  border: 5px, solid, white;
 }
