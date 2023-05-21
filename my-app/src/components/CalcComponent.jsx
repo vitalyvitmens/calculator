@@ -38,6 +38,9 @@ export const CalcComponent = (props) => {
 		}
 	}
 
+	const percentage = (setCalc, SetResult) =>
+		calculate((100 * setCalc) / SetResult)
+
 	const deleteLast = () => {
 		if (calc === '') {
 			return
@@ -146,7 +149,10 @@ export const CalcComponent = (props) => {
 					</button>
 				</div>
 				<div>
-					{buttonArr.slice(19, 22).map(({ id, value, type }) => (
+					<button className={buttonArr[19].type} onClick={percentage}>
+						%
+					</button>
+					{buttonArr.slice(20, 22).map(({ id, value, type }) => (
 						<button key={id} className={type} onClick={() => updateCalc(value)}>
 							{value}
 						</button>
