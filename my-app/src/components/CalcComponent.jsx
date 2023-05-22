@@ -38,8 +38,7 @@ export const CalcComponent = (props) => {
 		}
 	}
 
-	const percentage = (setCalc, SetResult) =>
-		calculate((100 * setCalc) / SetResult)
+	const percentage = () => setCalc((eval(calc)*0.01).toString())
 
 	const deleteLast = () => {
 		if (calc === '') {
