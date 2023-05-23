@@ -1,8 +1,24 @@
 .app {
 	text-align: center;
+	margin: auto;
 }
 
-.header {
+html {
+	background-color: #282c34;
+}
+
+.leftGroup {
+	width: 350px;
+	margin: auto;
+}
+
+.rightGroup {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+}
+
+/* .header {
 	background-color: #282c34;
 	min-height: 100vh;
 	display: flex;
@@ -11,4 +27,155 @@
 	justify-content: center;
 	font-size: calc(10px + 2vmin);
 	color: white;
+} */
+
+.screen {
+	background-color: black;
+	color: white;
+	font-size: 40px;
+	text-align: end;
+	width: 15rem;
+	height: 6rem;
+	border-radius: 15px;
+	border: 2px solid goldenrod;
+	padding: 0px 10px 0px 10px;
+	margin-bottom: 10px;
+	margin: auto;
+}
+
+.resultScreen {
+	color: green;
+}
+
+.buttons {
+	display: flex;
+}
+
+.button {
+	display: inline-block;
+	border-radius: 50%;
+	padding: 0.25rem;
+	margin: 0.25rem;
+	width: 5rem;
+	height: 5rem;
+	background-color: #373d49;
+	color: white;
+	font-size: 30px;
+	border: 0;
+	box-shadow: -5px 3px black;
+	cursor: pointer;
+}
+
+.button:hover {
+	opacity: 0.8;
+	box-shadow: -5px 3px rgb(20, 20, 20);
+}
+
+.button:active {
+	opacity: 0.6;
+	box-shadow: -2px 1px rgb(20, 20, 20);
+}
+
+.initialize {
+	display: inline-block;
+	border-radius: 50%;
+	padding: 0.25rem;
+	margin: 0.25rem;
+	width: 3.5rem;
+	height: 3.5rem;
+	background-color: #373d49;
+	color: rgb(199, 190, 190);
+	font-size: 20px;
+	border: 0;
+	box-shadow: -5px 3px black;
+	cursor: pointer;
+}
+
+.initialize:hover {
+	opacity: 0.8;
+	box-shadow: -5px 3px rgb(20, 20, 20);
+}
+
+.initialize:active {
+	opacity: 0.6;
+	box-shadow: -2px 1px rgb(20, 20, 20);
+}
+
+.operator {
+	display: inline-block;
+	border-radius: 50%;
+	padding: 0.25rem;
+	margin: 0.25rem;
+	width: 3.5rem;
+	height: 3.5rem;
+	background-color: #373d49;
+	color: rgb(116, 165, 221);
+	font-size: 30px;
+	font-weight: bold;
+	border: 0;
+	box-shadow: -5px 3px black;
+	cursor: pointer;
+}
+
+.operator:hover {
+	opacity: 0.8;
+	box-shadow: -5px 3px rgb(20, 20, 20);
+}
+
+.operator:active {
+	opacity: 0.6;
+	box-shadow: -2px 1px rgb(20, 20, 20);
+}
+
+.equal {
+	display: inline-block;
+	border-radius: 10px;
+	padding: 0.25rem;
+	margin: 0.25rem;
+	width: 3.5rem;
+	height: 3.5rem;
+	background-color: rgb(65, 65, 231);
+	grid-column: 4/6;
+	color: rgb(255, 255, 255);
+	font-size: 30px;
+	font-weight: bold;
+	border: 0;
+	box-shadow: -5px 3px black;
+	cursor: pointer;
+}
+
+.equal:hover {
+	opacity: 0.8;
+	box-shadow: -5px 3px rgb(20, 20, 20);
+}
+
+.equal:active {
+	opacity: 0.6;
+	box-shadow: -2px 1px rgb(20, 20, 20);
+}
+
+span {
+	color: rgb(167, 163, 163);
+	font-size: 18px;
+}
+
+h2 {
+	margin-top: -20px;
+	margin-bottom: 10px;
+	font-size: 70px;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 hsl(20, 100%, 50%), 2px 2px 0 hsl(20, 100%, 50%),
+		3px 3px 0 hsl(35, 100%, 50%), 4px 4px 0 hsl(35, 100%, 50%),
+		5px 5px 0 hsl(45, 100%, 50%), 6px 6px 0 hsl(45, 100%, 55%),
+		7px 7px 0 hsl(55, 100%, 60%), 8px 8px 0 hsl(55, 100%, 65%);
+	color: hsl(0, 100%, 40%);
+	transition: all 1s;
+}
+
+h2:hover {
+	text-shadow: 1px -1px 0 hsl(290, 100%, 40%), 2px -2px 0 hsl(290, 100%, 40%),
+		3px -3px 0 hsl(280, 100%, 60%), 4px -4px 0 hsl(280, 100%, 60%),
+		5px -5px 0 hsl(270, 100%, 75%), 6px -6px 0 hsl(270, 100%, 80%),
+		7px -7px 0 hsl(260, 100%, 85%), 8px -8px 0 hsl(260, 100%, 90%);
+	color: hsl(300, 100%, 30%);
 }
