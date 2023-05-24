@@ -1,77 +1,59 @@
 .app {
 	text-align: center;
-	margin: auto;
 }
 
-html {
-	background-color: #282c34;
-}
-
-.leftGroup {
-	width: 350px;
-	margin: auto;
-}
-
-.rightGroup {
-	display: flex;
-	flex-direction: column;
-	margin: auto;
-}
-
-/* .header {
+body {
 	background-color: #282c34;
 	min-height: 100vh;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 	font-size: calc(10px + 2vmin);
 	color: white;
-} */
+  margin: auto;
+}
 
-.screen {
+div {
+	width: 300px;
+	margin: auto;
+}
+
+.display {
 	background-color: black;
 	color: white;
-	font-size: 40px;
+	font-size: 30px;
 	text-align: end;
 	width: 15rem;
-	height: 6rem;
+	height: 5rem;
 	border-radius: 15px;
 	border: 2px solid goldenrod;
 	padding: 0px 10px 0px 10px;
 	margin-bottom: 10px;
-	margin: auto;
 }
 
-.resultScreen {
+.displayEqual {
 	color: green;
 }
 
-.buttons {
-	display: flex;
-}
-
-.button {
+.number {
 	display: inline-block;
 	border-radius: 50%;
 	padding: 0.25rem;
 	margin: 0.25rem;
-	width: 5rem;
-	height: 5rem;
+	width: 3.5rem;
+	height: 3.5rem;
 	background-color: #373d49;
 	color: white;
-	font-size: 30px;
+	font-size: 20px;
 	border: 0;
 	box-shadow: -5px 3px black;
 	cursor: pointer;
 }
 
-.button:hover {
+.number:hover {
 	opacity: 0.8;
 	box-shadow: -5px 3px rgb(20, 20, 20);
 }
 
-.button:active {
+.number:active {
 	opacity: 0.6;
 	box-shadow: -2px 1px rgb(20, 20, 20);
 }
@@ -152,11 +134,6 @@ html {
 .equal:active {
 	opacity: 0.6;
 	box-shadow: -2px 1px rgb(20, 20, 20);
-}
-
-span {
-	color: rgb(167, 163, 163);
-	font-size: 18px;
 }
 
 h2 {
